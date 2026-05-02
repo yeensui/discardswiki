@@ -5,56 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DisCards Wiki - Database</title>
     <style>
-        /* --- Entry & Background Animations --- */
+        /* --- Smooth Entry & Background --- */
         @keyframes fadeInPage {
-            0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            0% { opacity: 0; transform: translateY(15px); filter: blur(12px); }
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
         @keyframes logoFloat {
-            0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.05; }
-            50% { transform: translate(-50%, -52%) scale(1.05) rotate(5deg); opacity: 0.1; }
-            100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.05; }
+            0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.04; }
+            50% { transform: translate(-50%, -53%) scale(1.08) rotate(3deg); opacity: 0.08; }
+            100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.04; }
         }
 
         body {
             margin: 0;
             min-height: 100vh;
             background: #ffffff;
-            background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%);
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+            background: radial-gradient(circle at center, #ffffff 0%, #f4f6f8 100%);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
             color: #132257; 
             display: flex;
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            animation: fadeInPage 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: fadeInPage 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            -webkit-font-smoothing: antialiased;
         }
 
         .bg-logo {
             position: fixed;
             top: 50%; left: 50%;
-            width: 80vw; max-width: 700px;
+            width: 85vw; max-width: 750px;
             z-index: -1;
             pointer-events: none;
-            animation: logoFloat 10s ease-in-out infinite;
+            animation: logoFloat 12s ease-in-out infinite;
+            will-change: transform, opacity;
         }
 
-        header { padding: 60px 20px 30px; text-align: center; z-index: 1; }
+        header { padding: 70px 20px 40px; text-align: center; z-index: 1; }
         
         .beta-badge {
-            font-size: 0.65rem;
+            font-size: 0.6rem;
             background: #132257;
             color: #fff;
-            padding: 2px 8px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-weight: 800;
+            font-weight: 900;
             vertical-align: middle;
-            margin-left: 8px;
+            margin-left: 10px;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        h1 { font-size: 2.8rem; font-weight: 800; letter-spacing: -2px; margin: 0; color: #132257; }
+        h1 { font-size: 3rem; font-weight: 800; letter-spacing: -2px; margin: 0; color: #132257; }
 
         .highlight { color: #0071e3; font-weight: 700; }
 
@@ -66,70 +69,74 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
-        /* --- Light Liquid Glass UI --- */
+        /* --- Liquid Glass UI --- */
         .glass-panel {
             width: 100%;
-            background: rgba(255, 255, 255, 0.7); 
-            backdrop-filter: blur(25px) saturate(200%);
-            -webkit-backdrop-filter: blur(25px) saturate(200%);
-            border: 1px solid rgba(19, 34, 87, 0.1);
-            border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(19, 34, 87, 0.05);
+            background: rgba(255, 255, 255, 0.75); 
+            backdrop-filter: blur(30px) saturate(210%);
+            -webkit-backdrop-filter: blur(30px) saturate(210%);
+            border: 1px solid rgba(19, 34, 87, 0.08);
+            border-radius: 26px;
+            box-shadow: 0 8px 30px rgba(19, 34, 87, 0.04);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
+            will-change: transform, background;
         }
 
         @media (min-width: 1024px) {
-            .glass-panel:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.9); box-shadow: 0 15px 40px rgba(19, 34, 87, 0.1); }
+            .glass-panel:hover { transform: translateY(-4px) scale(1.01); background: rgba(255, 255, 255, 0.95); box-shadow: 0 20px 45px rgba(19, 34, 87, 0.08); }
         }
 
         .dropdown-header {
-            padding: 22px 28px;
+            padding: 24px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .dropdown-header h2 { font-size: 0.85rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #132257; }
+        .dropdown-header h2 { font-size: 0.8rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: #132257; opacity: 0.9; }
         
-        .chevron { width: 16px; height: 16px; transition: transform 0.4s ease; stroke: #132257; fill: none; }
+        .chevron { width: 18px; height: 18px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); stroke: #132257; fill: none; opacity: 0.6; }
 
         .dropdown-content {
-            max-height: 0; opacity: 0; padding: 0 28px;
-            transition: all 0.4s ease-out; pointer-events: none;
+            max-height: 0; opacity: 0; padding: 0 30px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+            pointer-events: none;
+            filter: blur(5px);
         }
 
-        .glass-panel.is-open .dropdown-content { max-height: 1000px; opacity: 1; padding-bottom: 28px; pointer-events: auto; }
-        .glass-panel.is-open .chevron { transform: rotate(180deg); }
+        .glass-panel.is-open .dropdown-content { max-height: 1000px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); }
+        .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
-            background: rgba(19, 34, 87, 0.03);
-            padding: 18px; border-radius: 18px; margin-top: 10px;
-            border: 1px solid rgba(19, 34, 87, 0.05);
+            background: rgba(19, 34, 87, 0.04);
+            padding: 20px; border-radius: 20px; margin-top: 10px;
+            border: 1px solid rgba(19, 34, 87, 0.03);
+            line-height: 1.6;
         }
 
         /* --- House Tags --- */
-        .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 15px; }
-        .house-tag { padding: 12px; border-radius: 14px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.05); }
+        .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 15px; }
+        .house-tag { padding: 14px; border-radius: 16px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.03); }
 
-        .h-hotspur { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
-        .h-sisters { background: rgba(155, 89, 182, 0.1); color: #9b59b6; }
-        .h-castle { background: rgba(230, 126, 34, 0.1); color: #e67e22; }
-        .h-lions { background: rgba(19, 34, 87, 0.1); color: #132257; }
-        .h-whitehot { background: rgba(212, 175, 55, 0.1); color: #d4af37; }
-        .h-1882 { background: rgba(241, 196, 15, 0.1); color: #f1c40f; }
+        .h-hotspur { background: rgba(46, 204, 113, 0.12); color: #27ae60; }
+        .h-sisters { background: rgba(155, 89, 182, 0.12); color: #8e44ad; }
+        .h-castle { background: rgba(230, 126, 34, 0.12); color: #d35400; }
+        .h-lions { background: rgba(19, 34, 87, 0.08); color: #132257; }
+        .h-whitehot { background: rgba(212, 175, 55, 0.12); color: #b8860b; }
+        .h-1882 { background: rgba(241, 196, 15, 0.15); color: #c09e00; }
 
         /* --- Upgrade Grid --- */
-        .upgrade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 15px; }
-        .tier-item { background: #fff; padding: 15px; border-radius: 18px; text-align: center; border: 1px solid rgba(19, 34, 87, 0.08); }
-        .tier-item span { font-size: 1.6rem; font-weight: 800; display: block; }
-        .tier-item small { font-size: 0.65rem; font-weight: 700; color: #132257; opacity: 0.5; text-transform: uppercase; }
+        .upgrade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 15px; }
+        .tier-item { background: #fff; padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(19, 34, 87, 0.06); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
+        .tier-item span { font-size: 1.8rem; font-weight: 800; display: block; }
+        .tier-item small { font-size: 0.65rem; font-weight: 700; color: #132257; opacity: 0.4; text-transform: uppercase; }
 
-        .discord-link { color: #0071e3; text-decoration: none; font-weight: 700; }
+        .discord-link { color: #0071e3; text-decoration: none; font-weight: 700; border-bottom: 1.5px solid rgba(0, 113, 227, 0.2); }
     </style>
 </head>
 <body>
@@ -150,8 +157,8 @@
             </div>
             <div class="dropdown-content">
                 <p>1. Join the <a href="https://discord.gg/spurs" target="_blank" class="discord-link">Spurs Discord Server</a>.</p>
-                <p>2. Navigate to the <span class="highlight">Activities</span> section in any VC.</p>
-                <p>3. Launch <span class="highlight">DisCards</span> and start your career.</p>
+                <p>2. Locate the <span class="highlight">#play-discards</span> channel.</p>
+                <p>3. Use the channel to launch <span class="highlight">DisCards</span> and start your collection.</p>
             </div>
         </div>
 
@@ -162,7 +169,7 @@
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>Build your squad around these six <span class="highlight">House Links</span> to maximize chemistry and outperform higher-rated teams:</p>
+                <p>Squad chemistry is vital. Match players from the same <span class="highlight">House</span> to unlock performance boosts:</p>
                 <div class="house-grid">
                     <div class="house-tag h-hotspur">Hotspur</div>
                     <div class="house-tag h-sisters">Sisters</div>
@@ -182,7 +189,7 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>Your <span class="highlight">Server Rank</span> directly influences your card varieties. Depending on your standing, cards will feature different stats, positions, and unique abilities to help you climb the leaderboards.</p>
+                    <p>While your <span class="highlight">Server Rank</span> unlocks different base card varieties, keep an eye out for <span class="highlight">Super Rare Special Cards</span>. These unique items are luck-based drops that **cannot be upgraded** manually—it all depends on your fortune during active sessions.</p>
                 </div>
             </div>
         </div>
@@ -195,7 +202,7 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>The <span class="highlight">Binder</span> is your central inventory. Access it to view your collection, check card performance, and navigate to the upgrade screen to merge your duplicates.</p>
+                    <p>Open your <span class="highlight">Binder</span> to view your active roster. From here, you can track stats and initiate merges once you've collected the required number of duplicates.</p>
                 </div>
             </div>
         </div>
@@ -224,11 +231,11 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>Compete for the top spot in the server. Ranks are updated in real-time for:</p>
+                    <p>Compete against the best in the server across multiple categories:</p>
                     <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><span class="highlight">Goals Scored</span></li>
-                        <li><span class="highlight">Clean Sheets</span></li>
-                        <li><span class="highlight">Cup & League Wins</span></li>
+                        <li><span class="highlight">Goals Scored</span> (Offensive)</li>
+                        <li><span class="highlight">Clean Sheets</span> (Defensive)</li>
+                        <li><span class="highlight">Cup & League Wins</span> (Success)</li>
                     </ul>
                 </div>
             </div>
@@ -239,7 +246,9 @@
     <script>
         function toggleDropdown(el) {
             const panels = document.querySelectorAll('.glass-panel');
-            panels.forEach(p => { if (p !== el) p.classList.remove('is-open'); });
+            panels.forEach(p => { 
+                if (p !== el) p.classList.remove('is-open'); 
+            });
             el.classList.toggle('is-open');
         }
     </script>
