@@ -55,7 +55,7 @@
             gap: 20px;
         }
 
-        /* --- Glass Panel (Universal) --- */
+        /* --- Universal Glass Panel --- */
         .glass-panel {
             width: 100%;
             background: rgba(255, 255, 255, 0.08); 
@@ -101,7 +101,7 @@
         }
 
         .glass-panel.is-open .dropdown-content {
-            max-height: 800px; /* Increased for mechanics text */
+            max-height: 800px; 
             opacity: 1;
             padding-bottom: 30px;
             pointer-events: auto;
@@ -109,21 +109,12 @@
 
         .glass-panel.is-open .chevron { transform: rotate(180deg); }
 
-        /* --- Mechanics Template Styling --- */
-        .mechanics-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 20px;
-            margin-top: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
         .discord-link { color: #5dade2; text-decoration: none; font-weight: 700; }
 
-        /* --- Upgrade Section Grid --- */
+        /* --- Upgrade Requirements Grid --- */
         .upgrade-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 12px;
             margin-top: 20px;
         }
@@ -137,7 +128,15 @@
         }
 
         .tier-item span { font-size: 1.8rem; font-weight: 800; }
-        .tier-item small { font-size: 0.7rem; font-weight: 600; opacity: 0.6; display: block; margin-top: 5px; }
+        .tier-item small { font-size: 0.7rem; font-weight: 600; opacity: 0.6; display: block; margin-top: 5px; text-transform: uppercase; }
+
+        .mechanics-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
 
     </style>
 </head>
@@ -152,7 +151,7 @@
 
     <div class="container">
         
-        <!-- Tab 1: How to Access -->
+        <!-- Section 1: How to Access -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>How to Access</h2>
@@ -165,24 +164,7 @@
             </div>
         </div>
 
-        <!-- Tab 2: Upgrade Requirements -->
-        <div class="glass-panel" onclick="toggleDropdown(this)">
-            <div class="dropdown-header">
-                <h2>Upgrade Requirements</h2>
-                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="dropdown-content">
-                <p>Combine duplicate cards to reach higher rarity tiers:</p>
-                <div class="upgrade-grid">
-                    <div class="tier-item"><span style="color: #cd7f32;">5</span><small>BRONZE</small></div>
-                    <div class="tier-item"><span style="color: #d1d1d1;">8</span><small>SILVER</small></div>
-                    <div class="tier-item"><span style="color: #d4af37;">12</span><small>GOLD</small></div>
-                    <div class="tier-item"><span style="color: #5dade2;">15</span><small>DIAMOND</small></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab 3: Card Mechanics (Unified) -->
+        <!-- Section 2: How do new cards work? -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>How do new cards work?</h2>
@@ -200,16 +182,44 @@
             </div>
         </div>
 
+        <!-- Section 3: Upgrade Requirements (Moved to Bottom) -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>Upgrade Requirements</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <p>Requirements to merge duplicates into higher tiers:</p>
+                <div class="upgrade-grid">
+                    <div class="tier-item">
+                        <span style="color: #cd7f32;">5</span>
+                        <small>Lilywhites to Bronze</small>
+                    </div>
+                    <div class="tier-item">
+                        <span style="color: #d1d1d1;">8</span>
+                        <small>Bronze to Silver</small>
+                    </div>
+                    <div class="tier-item">
+                        <span style="color: #d4af37;">12</span>
+                        <small>Silver to Gold</small>
+                    </div>
+                    <div class="tier-item">
+                        <span style="color: #5dade2;">15</span>
+                        <small>Gold to Diamond</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script>
         function toggleDropdown(el) {
-            // This ensures only one panel is open at a time (optional - can remove if you want multiple open)
+            // Closes other panels when one is opened
             const panels = document.querySelectorAll('.glass-panel');
             panels.forEach(p => {
                 if (p !== el) p.classList.remove('is-open');
             });
-            
             el.classList.toggle('is-open');
         }
     </script>
