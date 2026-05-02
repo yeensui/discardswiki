@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discards Wiki - Database</title>
     <style>
-        /* --- Smooth Entry Fade --- */
+        /* --- Entry Animations --- */
         @keyframes fadeInPage {
             0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
             100% { opacity: 1; transform: translateY(0); filter: blur(0); }
@@ -44,7 +44,6 @@
         h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1.5px; margin: 0; }
         header p { color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-top: 10px; }
 
-        /* --- Container set to fit screen and align tabs --- */
         .container {
             width: 100%;
             max-width: 850px;
@@ -53,10 +52,10 @@
             z-index: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px; /* Equal spacing between all tabs */
+            gap: 20px;
         }
 
-        /* --- Glass Panel (Universal Width) --- */
+        /* --- Glass Panel (Universal) --- */
         .glass-panel {
             width: 100%;
             background: rgba(255, 255, 255, 0.08); 
@@ -82,7 +81,7 @@
             align-items: center;
         }
 
-        .dropdown-header h2 { font-size: 1.3rem; margin: 0; font-weight: 600; }
+        .dropdown-header h2 { font-size: 1.25rem; margin: 0; font-weight: 600; }
         
         .chevron {
             width: 20px;
@@ -98,10 +97,11 @@
             padding: 0 30px;
             transition: all 0.4s ease-out;
             pointer-events: none;
+            overflow: hidden;
         }
 
         .glass-panel.is-open .dropdown-content {
-            max-height: 500px;
+            max-height: 800px; /* Increased for mechanics text */
             opacity: 1;
             padding-bottom: 30px;
             pointer-events: auto;
@@ -109,12 +109,16 @@
 
         .glass-panel.is-open .chevron { transform: rotate(180deg); }
 
-        /* --- Link Styling --- */
-        .discord-link {
-            color: #5dade2;
-            text-decoration: none;
-            font-weight: 700;
+        /* --- Mechanics Template Styling --- */
+        .mechanics-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 20px;
+            margin-top: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
+
+        .discord-link { color: #5dade2; text-decoration: none; font-weight: 700; }
 
         /* --- Upgrade Section Grid --- */
         .upgrade-grid {
@@ -135,24 +139,6 @@
         .tier-item span { font-size: 1.8rem; font-weight: 800; }
         .tier-item small { font-size: 0.7rem; font-weight: 600; opacity: 0.6; display: block; margin-top: 5px; }
 
-        /* --- Action Button (Equal Width to Panels) --- */
-        .action-btn {
-            width: 100%;
-            padding: 22px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 30px;
-            color: #fff;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-            box-sizing: border-box;
-        }
-
-        .action-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.01); }
-
     </style>
 </head>
 <body>
@@ -166,7 +152,7 @@
 
     <div class="container">
         
-        <!-- How to Access (Dropdown) -->
+        <!-- Tab 1: How to Access -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>How to Access</h2>
@@ -179,24 +165,51 @@
             </div>
         </div>
 
-        <!-- Upgrade Tiers (Static Panel) -->
-        <div class="glass-panel" style="padding: 24px 30px; cursor: default;">
-            <h2 style="margin:0; font-size: 1.3rem;">Upgrade Requirements</h2>
-            <div class="upgrade-grid">
-                <div class="tier-item"><span style="color: #cd7f32;">5</span><small>BRONZE</small></div>
-                <div class="tier-item"><span style="color: #d1d1d1;">8</span><small>SILVER</small></div>
-                <div class="tier-item"><span style="color: #d4af37;">12</span><small>GOLD</small></div>
-                <div class="tier-item"><span style="color: #5dade2;">15</span><small>DIAMOND</small></div>
+        <!-- Tab 2: Upgrade Requirements -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>Upgrade Requirements</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <p>Combine duplicate cards to reach higher rarity tiers:</p>
+                <div class="upgrade-grid">
+                    <div class="tier-item"><span style="color: #cd7f32;">5</span><small>BRONZE</small></div>
+                    <div class="tier-item"><span style="color: #d1d1d1;">8</span><small>SILVER</small></div>
+                    <div class="tier-item"><span style="color: #d4af37;">12</span><small>GOLD</small></div>
+                    <div class="tier-item"><span style="color: #5dade2;">15</span><small>DIAMOND</small></div>
+                </div>
             </div>
         </div>
 
-        <!-- Mechanics Page Link -->
-        <a href="mechanics.html" class="action-btn">How do new Discards cards work? →</a>
+        <!-- Tab 3: Card Mechanics (Unified) -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>How do new cards work?</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <h3 style="margin-top:0; color:#5dade2;">Card Rarity & Drops</h3>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">New cards are dropped during active sessions. Higher rarities like Gold and Diamond have significantly lower drop rates and often require strategic upgrades.</p>
+                </div>
+                <div class="mechanics-box">
+                    <h3 style="margin-top:0; color:#5dade2;">Collection Strategy</h3>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">Focus on collecting Lilywhites to build your base. Once you have five, you can move toward your first Bronze upgrade.</p>
+                </div>
+            </div>
+        </div>
 
     </div>
 
     <script>
         function toggleDropdown(el) {
+            // This ensures only one panel is open at a time (optional - can remove if you want multiple open)
+            const panels = document.querySelectorAll('.glass-panel');
+            panels.forEach(p => {
+                if (p !== el) p.classList.remove('is-open');
+            });
+            
             el.classList.toggle('is-open');
         }
     </script>
