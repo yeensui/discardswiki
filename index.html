@@ -102,7 +102,7 @@
             transform: scale(0.98);
         }
 
-        .glass-panel.is-open .dropdown-content { max-height: 1800px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
+        .glass-panel.is-open .dropdown-content { max-height: 3500px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
         .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
@@ -112,16 +112,17 @@
             line-height: 1.6;
         }
 
-        /* --- HD Image Styling --- */
+        /* --- Optimized HD Image Styling --- */
         .tab-image {
             width: 100%;
+            max-width: 600px; /* Prevents over-enlarging */
             height: auto;
             border-radius: 18px;
-            margin-top: 15px;
+            margin: 15px auto 0;
             border: 1px solid rgba(19, 34, 87, 0.1);
             box-shadow: 0 10px 25px rgba(19, 34, 87, 0.05);
             display: block;
-            image-rendering: -webkit-optimize-contrast; /* Keeps image sharp */
+            image-rendering: -webkit-optimize-contrast;
             object-fit: contain;
         }
 
@@ -174,14 +175,17 @@
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>Strategic chemistry is key. Match players from the same <span class="highlight">House</span> for massive boosts:</p>
-                <div class="house-grid">
-                    <div class="house-tag h-hotspur">Hotspur</div>
-                    <div class="house-tag h-sisters">Sisters</div>
-                    <div class="house-tag h-castle">Castle</div>
-                    <div class="house-tag h-lions">Lion</div>
-                    <div class="house-tag h-whitehot">White-Hot</div>
-                    <div class="house-tag h-1882">1882</div>
+                <div class="mechanics-box">
+                    <p>Strategic chemistry is key. Match players from the same <span class="highlight">House</span> for massive boosts:</p>
+                    <div class="house-grid">
+                        <div class="house-tag h-hotspur">Hotspur</div>
+                        <div class="house-tag h-sisters">Sisters</div>
+                        <div class="house-tag h-castle">Castle</div>
+                        <div class="house-tag h-lions">Lion</div>
+                        <div class="house-tag h-whitehot">White-Hot</div>
+                        <div class="house-tag h-1882">1882</div>
+                    </div>
+                    <img src="https://i.ibb.co/ynhvXy7T/house-preview.png" class="tab-image" alt="House System Preview">
                 </div>
             </div>
         </div>
@@ -204,6 +208,7 @@
                 <div class="mechanics-box">
                     <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">Super Rare Icons</h3>
                     <p style="margin:0; font-size: 0.95rem;">Luck-based <span class="highlight">Super Rare versions</span> are the hardest to pack. These icons **cannot be upgraded** using base cards.</p>
+                    <img src="https://i.ibb.co/XZPfkyyQ/ranks-preview.png" class="tab-image" alt="Ranks & Variants Preview">
                 </div>
             </div>
         </div>
@@ -231,6 +236,7 @@
             <div class="dropdown-content">
                 <div class="mechanics-box">
                     <p>The <span class="highlight">Binder</span> is your collection's home. It only displays your personal library and is the central place to <span class="highlight">trade</span> players or <span class="highlight">upgrade</span> your duplicates.</p>
+                    <img src="https://i.ibb.co/RGZfhrdH/binder-preview.png" class="tab-image" alt="Binder Hub Preview">
                 </div>
             </div>
         </div>
@@ -260,6 +266,7 @@
             <div class="dropdown-content">
                 <div class="mechanics-box">
                     <p>Compete for the top spot in the server across <span class="highlight">Goals Scored</span>, <span class="highlight">Clean Sheets</span>, and <span class="highlight">Total Wins</span>.</p>
+                    <img src="https://i.ibb.co/QyVdYG0/leaderboard-preview.png" class="tab-image" alt="Leaderboards Preview">
                 </div>
             </div>
         </div>
