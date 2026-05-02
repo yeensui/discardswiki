@@ -3,36 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discards Wiki</title>
+    <title>Discards Wiki - Welcome</title>
     <style>
-        @import url('https://fonts.cdnfonts.com/css/tottenham');
-
+        /* --- Reset and Default State --- */
         body, html {
             margin: 0;
             padding: 0;
             width: 100%;
             height: 100%;
             overflow: hidden;
-            /* Applying the Spurs font */
-            font-family: 'Tottenham', sans-serif;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: #132257; /* Tottenham Navy Blue for contrast on pastels */
+            color: #1a1a1a;
             text-align: center;
+            background: #fff;
+            
+            /* Initial state: Normal size and visible */
+            transform: scale(1);
+            opacity: 1;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
         }
 
-        /* --- Smooth Pastel Gradient Animation --- */
+        /* --- This Class Triggers the Zoom Out --- */
+        body.page-exit {
+            transform: scale(2.5);
+            opacity: 0;
+            pointer-events: none; /* Prevents double clicking */
+        }
+
+        /* --- Smooth Pastel Gradient --- */
         .gradient-background {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
-            background: linear-gradient(-45deg, #a8e6cf, #dcedc1, #ffd3b6, #ffaaa5, #d291bc);
+            z-index: -2;
+            background: linear-gradient(-45deg, #f3e7e9, #e3eeff, #eef1f5, #f6f5f7);
             background-size: 400% 400%;
-            animation: gradientBG 18s ease-in-out infinite;
+            animation: gradientBG 15s ease infinite;
         }
 
         @keyframes gradientBG {
@@ -41,51 +52,84 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* --- Text Pop-Up Animation --- */
+        /* --- Blurred Logo Elements --- */
+        .logo-element {
+            position: absolute;
+            z-index: -1;
+            opacity: 0.12;
+            filter: blur(12px);
+            pointer-events: none;
+        }
+
+        .logo-1 { top: -10%; right: -5%; width: 45%; animation: drift 25s ease-in-out infinite alternate; }
+        .logo-2 { bottom: -15%; left: -5%; width: 35%; animation: drift 30s ease-in-out infinite alternate-reverse; }
+
+        @keyframes drift {
+            from { transform: rotate(0deg) translate(0, 0); }
+            to { transform: rotate(15deg) translate(-40px, 40px); }
+        }
+
+        /* --- Text Pop-Up --- */
         .content-container {
-            animation: textPopUp 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: textPopUp 1.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
             opacity: 0;
             transform: translateY(40px);
         }
 
         @keyframes textPopUp {
-            0% {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(40px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- Spurs Typography Styling --- */
-        h1 {
-            font-size: 4.5rem;
-            text-transform: uppercase; /* Spurs branding often uses All-Caps */
-            letter-spacing: 2px;
-            margin-bottom: 5px;
-            font-weight: 900;
-        }
+        h1 { font-size: 4.2rem; font-weight: 700; letter-spacing: -2px; margin-bottom: 5px; }
+        p { font-size: 1.4rem; color: #444; margin-bottom: 40px; }
 
-        p {
-            font-size: 1.6rem;
-            font-weight: 400;
-            opacity: 0.8;
+        /* --- Button --- */
+        .enter-btn {
+            display: inline-block;
+            padding: 18px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #1a1a1a;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1.5px solid rgba(26, 26, 26, 0.2);
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
             letter-spacing: 1px;
-            margin-top: 0;
+            text-transform: uppercase;
         }
 
+        .enter-btn:hover {
+            background: #1a1a1a;
+            color: #fff;
+            transform: scale(1.05);
+        }
     </style>
 </head>
 <body>
 
     <div class="gradient-background"></div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="logo-element logo-1">
+    <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="logo-element logo-2">
 
     <div class="content-container">
         <h1>Welcome to discards wiki</h1>
         <p>All info about Discoys Discards here!</p>
+        <a href="javascript:void(0)" onclick="enterWiki()" class="enter-btn">Enter Wiki</a>
     </div>
 
+    <script>
+        function enterWiki() {
+            // Simply add the class to trigger the CSS animation
+            document.body.classList.add('page-exit');
+            
+            setTimeout(() => {
+                window.location.href = "main.html";
+            }, 700);
+        }
+    </script>
 </body>
 </html>
