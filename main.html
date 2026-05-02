@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discards Wiki - Database</title>
+    <style>
+        /* --- Zoom-In Entry Transition --- */
+        @keyframes zoomInPage {
+            0% { transform: scale(0.6); opacity: 0; filter: blur(15px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        }
+
+        body {
+            margin: 0;
+            background: #fdfdfd;
+            font-family: "Helvetica Neue", Helvetica, sans-serif;
+            animation: zoomInPage 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            color: #1a1a1a;
+        }
+
+        header {
+            padding: 60px 20px;
+            text-align: center;
+            background: white;
+            border-bottom: 1px solid #eee;
+        }
+
+        h1 { font-size: 2.5rem; letter-spacing: -1px; margin: 0; }
+        header p { color: #888; font-size: 1.1rem; margin-top: 10px; }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- Template Design --- */
+        .card-template {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid #eaeaea;
+            transition: all 0.3s ease;
+        }
+
+        .card-template:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #132257; /* Spurs Navy */
+            color: white;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        h2 { font-size: 1.4rem; margin: 0 0 12px 0; }
+        .description { color: #666; line-height: 1.6; font-size: 0.95rem; }
+
+        /* Fake Content Placeholder */
+        .visual-placeholder {
+            margin-top: 25px;
+            height: 120px;
+            background: #f9f9f9;
+            border: 2px dashed #e0e0e0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #bbb;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Discoys Discards Database</h1>
+    <p>Select a category to begin exploring the collection.</p>
+</header>
+
+<div class="container">
+    <!-- Template: Player Cards -->
+    <div class="card-template">
+        <span class="badge">Archives</span>
+        <h2>Card Encyclopedia</h2>
+        <p class="description">Browse the full list of players included in the Discards universe, featuring background lore and rarity status.</p>
+        <div class="visual-placeholder">Card List Layout</div>
+    </div>
+
+    <!-- Template: Game Lore -->
+    <div class="card-template">
+        <span class="badge">Guidelines</span>
+        <h2>Collection Rules</h2>
+        <p class="description">Detailed information on card acquisition, the history of the sets, and how rarities are distributed.</p>
+        <div class="visual-placeholder">Text Block Layout</div>
+    </div>
+
+    <!-- Template: Checklist -->
+    <div class="card-template">
+        <span class="badge">Tracker</span>
+        <h2>Set Checklist</h2>
+        <p class="description">A master list for collectors to track "Serye Uno" and upcoming seasonal releases.</p>
+        <div class="visual-placeholder">Data Grid Layout</div>
+    </div>
+</div>
+
+</body>
+</html>
