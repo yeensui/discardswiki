@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discards Wiki - Database</title>
     <style>
-        /* --- Zoom-In Entry --- */
-        @keyframes zoomInPage {
-            0% { transform: scale(0.9); opacity: 0; filter: blur(20px); }
-            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        /* --- Smooth Entry Fade --- */
+        @keyframes fadeInPage {
+            0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
+            100% { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
         /* --- Wavy Blur Gradient Animation --- */
@@ -25,7 +26,7 @@
             background: linear-gradient(-45deg, #0b0e1e, #132257, #1a1d2e, #060914);
             background-size: 400% 400%;
             animation: 
-                zoomInPage 1s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                fadeInPage 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
                 wavyGradient 15s ease infinite;
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
             color: #ffffff;
@@ -34,9 +35,9 @@
             align-items: center;
         }
 
-        header { padding: 60px 20px; text-align: center; }
-        h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1.5px; margin: 0; }
-        header p { color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-top: 8px; }
+        header { padding: 80px 20px 40px; text-align: center; }
+        h1 { font-size: 3rem; font-weight: 700; letter-spacing: -1.5px; margin: 0; }
+        header p { color: rgba(255, 255, 255, 0.6); font-size: 1.2rem; margin-top: 10px; }
 
         .container {
             width: 100%;
@@ -47,12 +48,12 @@
 
         /* --- Dark Liquid Glass UI Panel --- */
         .glass-panel {
-            background: rgba(255, 255, 255, 0.08); /* Darker, more subtle glass */
-            backdrop-filter: blur(30px) saturate(150%);
-            -webkit-backdrop-filter: blur(30px) saturate(150%);
+            background: rgba(255, 255, 255, 0.08); 
+            backdrop-filter: blur(35px) saturate(150%);
+            -webkit-backdrop-filter: blur(35px) saturate(150%);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 30px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
             margin-bottom: 30px;
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
@@ -114,7 +115,7 @@
         }
 
         .step:hover { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.15); }
-        .discord-link { color: #5dade2; text-decoration: none; font-weight: 600; }
+        .discord-link { color: #5dade2; text-decoration: none; font-weight: 700; }
         .discord-link:hover { text-decoration: underline; }
 
         /* --- Upgrade Requirements Grid --- */
@@ -138,23 +139,6 @@
         .tier-val { font-size: 2.2rem; font-weight: 800; display: block; margin-top: 5px; }
         .tier-name { font-size: 0.8rem; text-transform: uppercase; color: rgba(255, 255, 255, 0.5); font-weight: 700; letter-spacing: 1px; }
 
-        /* --- Floating Back Button --- */
-        .back-btn {
-            position: fixed;
-            bottom: 30px;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(20px);
-            padding: 14px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            color: #fff;
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover { background: rgba(255, 255, 255, 0.25); transform: translateY(-3px); }
     </style>
 </head>
 <body>
@@ -213,8 +197,6 @@
     </div>
 
 </div>
-
-<a href="index.html" class="back-btn">← Home</a>
 
 </body>
 </html>
