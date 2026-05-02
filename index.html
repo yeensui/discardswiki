@@ -102,7 +102,7 @@
             transform: scale(0.98);
         }
 
-        .glass-panel.is-open .dropdown-content { max-height: 3500px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
+        .glass-panel.is-open .dropdown-content { max-height: 4000px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
         .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
@@ -112,17 +112,17 @@
             line-height: 1.6;
         }
 
-        /* --- Optimized HD Image Styling --- */
+        /* --- Optimized Sharp Image Styling --- */
         .tab-image {
             width: 100%;
-            max-width: 600px; /* Prevents over-enlarging */
+            max-width: 480px; /* Reduced further to eliminate pixelation */
             height: auto;
             border-radius: 18px;
             margin: 15px auto 0;
             border: 1px solid rgba(19, 34, 87, 0.1);
             box-shadow: 0 10px 25px rgba(19, 34, 87, 0.05);
             display: block;
-            image-rendering: -webkit-optimize-contrast;
+            image-rendering: auto; /* Browser default high-quality downsampling */
             object-fit: contain;
         }
 
