@@ -102,7 +102,7 @@
             transform: scale(0.98);
         }
 
-        .glass-panel.is-open .dropdown-content { max-height: 1200px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
+        .glass-panel.is-open .dropdown-content { max-height: 1500px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
         .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
@@ -110,6 +110,17 @@
             padding: 20px; border-radius: 20px; margin-top: 10px;
             border: 1px solid rgba(19, 34, 87, 0.03);
             line-height: 1.6;
+        }
+
+        /* --- Image Styling --- */
+        .tab-image {
+            width: 100%;
+            height: auto;
+            border-radius: 18px;
+            margin-top: 15px;
+            border: 1px solid rgba(19, 34, 87, 0.1);
+            box-shadow: 0 10px 25px rgba(19, 34, 87, 0.05);
+            display: block;
         }
 
         .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 15px; }
@@ -204,6 +215,7 @@
             <div class="dropdown-content">
                 <div class="mechanics-box">
                     <p>You can now <span class="highlight">trade cards</span> with other users! Swap duplicates to complete your collection or build your ultimate house squad.</p>
+                    <img src="https://i.ibb.co/Hp9G5dJp/trading-preview.png" class="tab-image" alt="Trading System Preview">
                 </div>
             </div>
         </div>
