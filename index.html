@@ -13,7 +13,7 @@
 
         @keyframes logoFloat {
             0% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.04; }
-            50% { transform: translate(-50%, -53%) scale(1.08) rotate(3deg); opacity: 0.08; }
+            50% { transform: translate(-50%, -53%) scale(1.06) rotate(3deg); opacity: 0.08; }
             100% { transform: translate(-50%, -50%) scale(1) rotate(0deg); opacity: 0.04; }
         }
 
@@ -28,7 +28,7 @@
             flex-direction: column;
             align-items: center;
             overflow-x: hidden;
-            animation: fadeInPage 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: fadeInPage 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             -webkit-font-smoothing: antialiased;
         }
 
@@ -72,7 +72,7 @@
             gap: 12px;
         }
 
-        /* --- Liquid Glass UI --- */
+        /* --- Liquid Glass UI Panel --- */
         .glass-panel {
             width: 100%;
             background: rgba(255, 255, 255, 0.75); 
@@ -88,7 +88,7 @@
         }
 
         @media (min-width: 1024px) {
-            .glass-panel:hover { transform: translateY(-4px) scale(1.01); background: rgba(255, 255, 255, 0.95); box-shadow: 0 20px 45px rgba(19, 34, 87, 0.08); }
+            .glass-panel:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.9); box-shadow: 0 20px 45px rgba(19, 34, 87, 0.08); }
         }
 
         .dropdown-header {
@@ -104,12 +104,20 @@
 
         .dropdown-content {
             max-height: 0; opacity: 0; padding: 0 30px;
-            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); 
+            transition: all 0.55s cubic-bezier(0.16, 1, 0.3, 1); 
             pointer-events: none;
-            filter: blur(5px);
+            filter: blur(8px);
+            transform: scale(0.98);
         }
 
-        .glass-panel.is-open .dropdown-content { max-height: 1000px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); }
+        .glass-panel.is-open .dropdown-content { 
+            max-height: 1200px; 
+            opacity: 1; 
+            padding-bottom: 30px; 
+            pointer-events: auto; 
+            filter: blur(0);
+            transform: scale(1);
+        }
         .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
@@ -121,7 +129,8 @@
 
         /* --- House Tags --- */
         .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 15px; }
-        .house-tag { padding: 14px; border-radius: 16px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.03); }
+        .house-tag { padding: 14px; border-radius: 16px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.03); transition: transform 0.2s ease; }
+        .house-tag:hover { transform: scale(1.05); }
 
         .h-hotspur { background: rgba(46, 204, 113, 0.12); color: #27ae60; }
         .h-sisters { background: rgba(155, 89, 182, 0.12); color: #8e44ad; }
@@ -158,7 +167,7 @@
             <div class="dropdown-content">
                 <p>1. Join the <a href="https://discord.gg/spurs" target="_blank" class="discord-link">Spurs Discord Server</a>.</p>
                 <p>2. Locate the <span class="highlight">#play-discards</span> channel.</p>
-                <p>3. Use the channel and activities to launch <span class="highlight">DisCards</span> and start your collection.</p>
+                <p>3. Access the channel and <span class="highlight">launch Discord Activities</span> to start your career.</p>
             </div>
         </div>
 
@@ -169,7 +178,7 @@
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>Squad chemistry is vital. Match players from the same <span class="highlight">House</span> to unlock performance boosts:</p>
+                <p>Strategic chemistry is key. Match players from the same <span class="highlight">House</span> for massive squad boosts:</p>
                 <div class="house-grid">
                     <div class="house-tag h-hotspur">Hotspur</div>
                     <div class="house-tag h-sisters">Sisters</div>
@@ -184,12 +193,21 @@
         <!-- Tab 3: Card and Server Rank -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
-                <h2>Server Rank & Card Types</h2>
+                <h2>Ranks & Card Variants</h2>
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>While your <span class="highlight">Server Rank</span> unlocks different base card varieties, keep an eye out for <span class="highlight">Super Rare Special Cards</span>. These unique items are luck-based drops that **cannot be upgraded** manually—it all depends on your fortune during active sessions.</p>
+                    <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">The Diamond Challenge</h3>
+                    <p style="margin:0; font-size: 0.95rem;">In the newest version of DisCards, <span class="highlight">packing Diamonds</span> has become much harder—making it a true thrill when you finally see that high-tier pull!</p>
+                </div>
+                <div class="mechanics-box">
+                    <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">Rank Variants</h3>
+                    <p style="margin:0; font-size: 0.95rem;">You receive cards based on your <span class="highlight">Server Rank</span>. These cards can have multiple versions featuring different positions and stats to suit your strategy.</p>
+                </div>
+                <div class="mechanics-box">
+                    <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">Super Rare Icons</h3>
+                    <p style="margin:0; font-size: 0.95rem;">There are <span class="highlight">Super Rare versions</span> of cards which are the hardest to pack in the game. These items are purely luck-based and **cannot be upgraded** with base cards.</p>
                 </div>
             </div>
         </div>
@@ -202,7 +220,7 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>Open your <span class="highlight">Binder</span> to view your active roster. From here, you can track stats and initiate merges once you've collected the required number of duplicates.</p>
+                    <p>The <span class="highlight">Binder</span> is your inventory. Use it to track your card stats, adjust your lineup, and merge your duplicates to climb the tiers.</p>
                 </div>
             </div>
         </div>
@@ -231,11 +249,11 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>Compete against the best in the server across multiple categories:</p>
+                    <p>Compete for the top spot in the server:</p>
                     <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><span class="highlight">Goals Scored</span> (Offensive)</li>
-                        <li><span class="highlight">Clean Sheets</span> (Defensive)</li>
-                        <li><span class="highlight">Cup & League Wins</span> (Success)</li>
+                        <li><span class="highlight">Goals Scored</span></li>
+                        <li><span class="highlight">Clean Sheets</span></li>
+                        <li><span class="highlight">Cup & League Wins</span></li>
                     </ul>
                 </div>
             </div>
@@ -246,9 +264,7 @@
     <script>
         function toggleDropdown(el) {
             const panels = document.querySelectorAll('.glass-panel');
-            panels.forEach(p => { 
-                if (p !== el) p.classList.remove('is-open'); 
-            });
+            panels.forEach(p => { if (p !== el) p.classList.remove('is-open'); });
             el.classList.toggle('is-open');
         }
     </script>
