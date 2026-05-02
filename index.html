@@ -58,6 +58,7 @@
         }
 
         h1 { font-size: 3rem; font-weight: 800; letter-spacing: -2px; margin: 0; color: #132257; }
+        header p { color: #0071e3; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-top: 8px; opacity: 0.8; }
 
         .highlight { color: #0071e3; font-weight: 700; }
 
@@ -83,22 +84,14 @@
             overflow: hidden;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
             cursor: pointer;
-            will-change: transform, background;
         }
 
         @media (min-width: 1024px) {
             .glass-panel:hover { transform: translateY(-4px); background: rgba(255, 255, 255, 0.9); box-shadow: 0 20px 45px rgba(19, 34, 87, 0.08); }
         }
 
-        .dropdown-header {
-            padding: 24px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
+        .dropdown-header { padding: 24px 30px; display: flex; justify-content: space-between; align-items: center; }
         .dropdown-header h2 { font-size: 0.8rem; margin: 0; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; color: #132257; opacity: 0.9; }
-        
         .chevron { width: 18px; height: 18px; transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1); stroke: #132257; fill: none; opacity: 0.6; }
 
         .dropdown-content {
@@ -109,14 +102,7 @@
             transform: scale(0.98);
         }
 
-        .glass-panel.is-open .dropdown-content { 
-            max-height: 1200px; 
-            opacity: 1; 
-            padding-bottom: 30px; 
-            pointer-events: auto; 
-            filter: blur(0);
-            transform: scale(1);
-        }
+        .glass-panel.is-open .dropdown-content { max-height: 1200px; opacity: 1; padding-bottom: 30px; pointer-events: auto; filter: blur(0); transform: scale(1); }
         .glass-panel.is-open .chevron { transform: rotate(180deg); opacity: 1; }
 
         .mechanics-box {
@@ -126,7 +112,6 @@
             line-height: 1.6;
         }
 
-        /* --- House Tags --- */
         .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 12px; margin-top: 15px; }
         .house-tag { padding: 14px; border-radius: 16px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.03); }
 
@@ -137,7 +122,6 @@
         .h-whitehot { background: rgba(212, 175, 55, 0.12); color: #b8860b; }
         .h-1882 { background: rgba(241, 196, 15, 0.15); color: #c09e00; }
 
-        /* --- Upgrade Grid --- */
         .upgrade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 15px; }
         .tier-item { background: #fff; padding: 18px; border-radius: 20px; text-align: center; border: 1px solid rgba(19, 34, 87, 0.06); box-shadow: 0 4px 12px rgba(0,0,0,0.02); }
         .tier-item span { font-size: 1.8rem; font-weight: 800; display: block; }
@@ -152,11 +136,12 @@
 
     <header>
         <h1>DisCards Wiki<span class="beta-badge">Beta</span></h1>
+        <p>A Discoys Exclusive Server Game</p>
     </header>
 
     <div class="container">
         
-        <!-- Tab: Accessing -->
+        <!-- Tab 1: Accessing -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Accessing the Game</h2>
@@ -169,7 +154,7 @@
             </div>
         </div>
 
-        <!-- Tab: House Dynamics -->
+        <!-- Tab 2: House Dynamics -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>House Dynamics</h2>
@@ -188,7 +173,7 @@
             </div>
         </div>
 
-        <!-- Tab: Ranks & Variants -->
+        <!-- Tab 3: Ranks & Variants -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Ranks & Card Variants</h2>
@@ -197,7 +182,11 @@
             <div class="dropdown-content">
                 <div class="mechanics-box">
                     <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">The Diamond Challenge</h3>
-                    <p style="margin:0; font-size: 0.95rem;">Packing <span class="highlight">Diamonds</span> is rare and rewarding. Cards are granted based on your <span class="highlight">Server Rank</span>, with multiple versions featuring different positions.</p>
+                    <p style="margin:0; font-size: 0.95rem;">Packing <span class="highlight">Diamonds</span> is rare and rewarding. Cards are granted based on your <span class="highlight">Server Rank</span>, with multiple versions available.</p>
+                </div>
+                <div class="mechanics-box">
+                    <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">Dynamic Positions</h3>
+                    <p style="margin:0; font-size: 0.95rem;">Depending on your standing, you can collect <span class="highlight">different types of cards</span>. The same player can feature different stats and positions, allowing for diverse tactical builds.</p>
                 </div>
                 <div class="mechanics-box">
                     <h3 style="margin:0 0 8px 0; font-size: 1rem; color: #0071e3;">Super Rare Icons</h3>
@@ -206,7 +195,7 @@
             </div>
         </div>
 
-        <!-- Tab: Trading (New!) -->
+        <!-- Tab 4: Trading -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Card Trading</h2>
@@ -214,12 +203,12 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>You can now <span class="highlight">trade cards</span> with other users! This is the perfect way to complete your sets or swap duplicates for the specific players you need to build your ultimate house squad.</p>
+                    <p>You can now <span class="highlight">trade cards</span> with other users! Swap duplicates to complete your collection or build your ultimate house squad.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Tab: Binder Hub -->
+        <!-- Tab 5: Binder Hub -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>The Binder Hub</h2>
@@ -227,12 +216,12 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>The <span class="highlight">Binder</span> is your collection's home. It only displays your personal library and is the central place to <span class="highlight">trade</span> players with others or <span class="highlight">upgrade</span> your duplicates to higher tiers.</p>
+                    <p>The <span class="highlight">Binder</span> is your collection's home. It only displays your personal library and is the central place to <span class="highlight">trade</span> players or <span class="highlight">upgrade</span> your duplicates.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Tab: Upgrade Costs -->
+        <!-- Tab 6: Upgrade Costs -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Upgrade Costs</h2>
@@ -248,7 +237,7 @@
             </div>
         </div>
 
-        <!-- Tab: Leaderboards -->
+        <!-- Tab 7: Leaderboards -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Global Leaderboards</h2>
@@ -256,12 +245,7 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <p>Compete for the top spot in the server:</p>
-                    <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li><span class="highlight">Goals Scored</span></li>
-                        <li><span class="highlight">Clean Sheets</span></li>
-                        <li><span class="highlight">Cup & League Wins</span></li>
-                    </ul>
+                    <p>Compete for the top spot in the server across <span class="highlight">Goals Scored</span>, <span class="highlight">Clean Sheets</span>, and <span class="highlight">Total Wins</span>.</p>
                 </div>
             </div>
         </div>
