@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discards Wiki - Database</title>
+    <title>DisCards Wiki - Database</title>
     <style>
         /* --- Entry Animations --- */
         @keyframes fadeInPage {
@@ -50,7 +50,7 @@
             border-radius: 50px;
             font-weight: 800;
             vertical-align: middle;
-            margin-left: 5px;
+            margin-left: 8px;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
@@ -94,11 +94,11 @@
             align-items: center;
         }
 
-        .dropdown-header h2 { font-size: 1.1rem; margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+        .dropdown-header h2 { font-size: 1rem; margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
         
         .chevron {
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             transition: transform 0.4s ease;
             stroke: #fff;
             fill: none;
@@ -175,7 +175,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="bg-logo">
 
     <header>
-        <h1>Discards Wiki<span class="beta-badge">Beta</span></h1>
+        <h1>DisCards Wiki<span class="beta-badge">Beta</span></h1>
     </header>
 
     <div class="container">
@@ -189,11 +189,29 @@
             <div class="dropdown-content">
                 <p>1. Join the <a href="https://discord.gg/spurs" target="_blank" class="discord-link">Spurs Discord Server</a>.</p>
                 <p>2. Open the **Activities** tab in any voice channel.</p>
-                <p>3. Search for and launch **Discoys Discards**.</p>
+                <p>3. Search for and launch **DisCards**.</p>
             </div>
         </div>
 
-        <!-- Section 2: The 6 Houses -->
+        <!-- Section 2: The Binder System -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>The Binder System</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <h3 style="margin-top:0; color:#5dade2;">Your Collection Hub</h3>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">The **Binder** is where all your collected cards are stored. It acts as your personal inventory, allowing you to view your progress, check card stats, and manage your full roster.</p>
+                </div>
+                <div class="mechanics-box">
+                    <h3 style="margin-top:0; color:#5dade2;">Manage Upgrades</h3>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">You can access the **Upgrade System** directly from the Binder. If you have enough duplicates, you can merge them here to elevate your cards to the next tier.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: The 6 Houses -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>The 6 Houses</h2>
@@ -212,7 +230,7 @@
             </div>
         </div>
 
-        <!-- Section 3: Chemistry vs Rating -->
+        <!-- Section 4: Chemistry & Performance -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Chemistry & Performance</h2>
@@ -223,11 +241,10 @@
                     <h3 style="margin-top:0; color:#5dade2;">The Chemistry Advantage</h3>
                     <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">Rating isn't everything. A lower-rated team with **high chemistry** (matching houses and positions) has a strong chance to outperform a higher-rated team made of random players.</p>
                 </div>
-                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 15px;">Tip: Prioritize House links before hunting for high-rating Diamond cards.</p>
             </div>
         </div>
 
-        <!-- Section 4: Rank & Card Variants -->
+        <!-- Section 5: Server Rank & Card Types -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Server Rank & Card Types</h2>
@@ -240,7 +257,7 @@
             </div>
         </div>
 
-        <!-- Section 5: Upgrade Requirements -->
+        <!-- Section 6: Upgrade Requirements -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Upgrade Requirements</h2>
