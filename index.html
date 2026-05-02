@@ -20,11 +20,10 @@
         body {
             margin: 0;
             min-height: 100vh;
-            /* Official Spurs Colors: White & Navy */
             background: #ffffff;
             background: radial-gradient(circle at center, #ffffff 0%, #f0f2f5 100%);
             font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-            color: #132257; /* Spurs Navy */
+            color: #132257; 
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,7 +31,6 @@
             animation: fadeInPage 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
-        /* --- Animating Background Logo --- */
         .bg-logo {
             position: fixed;
             top: 50%; left: 50%;
@@ -118,12 +116,12 @@
         .house-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; margin-top: 15px; }
         .house-tag { padding: 12px; border-radius: 14px; text-align: center; font-size: 0.85rem; font-weight: 700; border: 1px solid rgba(0,0,0,0.05); }
 
-        .h-hotspur { background: #e8fcf0; color: #2ecc71; }
-        .h-1882 { background: #fef9e7; color: #f1c40f; }
-        .h-sisters { background: #f5eef8; color: #9b59b6; }
-        .h-whitehot { background: #fdf5e6; color: #d4af37; }
-        .h-lions { background: #ebf5fb; color: #132257; }
-        .h-castle { background: #fdf2e9; color: #e67e22; }
+        .h-hotspur { background: rgba(46, 204, 113, 0.1); color: #2ecc71; }
+        .h-sisters { background: rgba(155, 89, 182, 0.1); color: #9b59b6; }
+        .h-castle { background: rgba(230, 126, 34, 0.1); color: #e67e22; }
+        .h-lions { background: rgba(19, 34, 87, 0.1); color: #132257; }
+        .h-whitehot { background: rgba(212, 175, 55, 0.1); color: #d4af37; }
+        .h-1882 { background: rgba(241, 196, 15, 0.1); color: #f1c40f; }
 
         /* --- Upgrade Grid --- */
         .upgrade-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 10px; margin-top: 15px; }
@@ -144,25 +142,7 @@
 
     <div class="container">
         
-        <!-- Leaderboards Section -->
-        <div class="glass-panel" onclick="toggleDropdown(this)">
-            <div class="dropdown-header">
-                <h2>Global Leaderboards</h2>
-                <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="dropdown-content">
-                <div class="mechanics-box">
-                    <p>Track your global standing against the entire server. You can view your specific rank for:</p>
-                    <ul style="padding-left: 20px; line-height: 1.8;">
-                        <li>Total <span class="highlight">Goals Scored</span></li>
-                        <li>Defensive <span class="highlight">Clean Sheets</span></li>
-                        <li>Total <span class="highlight">Cup & League Wins</span></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- How to Access -->
+        <!-- Tab 1: Accessing the Game -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Accessing the Game</h2>
@@ -175,27 +155,14 @@
             </div>
         </div>
 
-        <!-- The Binder System -->
-        <div class="glass-panel" onclick="toggleDropdown(this)">
-            <div class="dropdown-header">
-                <h2>The Binder Hub</h2>
-                <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="dropdown-content">
-                <div class="mechanics-box">
-                    <p>The <span class="highlight">Binder</span> is your primary collection screen. Here you can view stats, manage your lineup, and initiate <span class="highlight">Card Upgrades</span> once you possess enough duplicates.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- The 6 Houses -->
+        <!-- Tab 2: House Dynamics -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>House Dynamics</h2>
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>Build your squad around these six specific <span class="highlight">House Links</span> for maximum chemistry:</p>
+                <p>Build your squad around these six <span class="highlight">House Links</span> to maximize chemistry and outperform higher-rated teams:</p>
                 <div class="house-grid">
                     <div class="house-tag h-hotspur">Hotspur</div>
                     <div class="house-tag h-sisters">Sisters</div>
@@ -207,7 +174,33 @@
             </div>
         </div>
 
-        <!-- Upgrade Requirements -->
+        <!-- Tab 3: Card and Server Rank -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>Server Rank & Card Types</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <p>Your <span class="highlight">Server Rank</span> directly influences your card varieties. Depending on your standing, cards will feature different stats, positions, and unique abilities to help you climb the leaderboards.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: Binder Hub -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>The Binder Hub</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <p>The <span class="highlight">Binder</span> is your central inventory. Access it to view your collection, check card performance, and navigate to the upgrade screen to merge your duplicates.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 5: Upgrade Costs -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Upgrade Costs</h2>
@@ -219,6 +212,24 @@
                     <div class="tier-item"><span style="color: #95a5a6;">8</span><small>Bronze → Silver</small></div>
                     <div class="tier-item"><span style="color: #d4af37;">12</span><small>Silver → Gold</small></div>
                     <div class="tier-item"><span style="color: #0071e3;">15</span><small>Gold → Diamond</small></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 6: Leaderboards -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>Global Leaderboards</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <p>Compete for the top spot in the server. Ranks are updated in real-time for:</p>
+                    <ul style="padding-left: 20px; line-height: 1.8;">
+                        <li><span class="highlight">Goals Scored</span></li>
+                        <li><span class="highlight">Clean Sheets</span></li>
+                        <li><span class="highlight">Cup & League Wins</span></li>
+                    </ul>
                 </div>
             </div>
         </div>
