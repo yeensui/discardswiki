@@ -40,9 +40,22 @@
             z-index: -1; pointer-events: none;
         }
 
-        header { padding: 60px 20px 30px; text-align: center; z-index: 1; }
+        header { padding: 60px 20px 30px; text-align: center; z-index: 1; position: relative; }
+        
+        .beta-badge {
+            font-size: 0.65rem;
+            background: #5dade2;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 50px;
+            font-weight: 800;
+            vertical-align: middle;
+            margin-left: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
         h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1.5px; margin: 0; }
-        header p { color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-top: 10px; }
 
         .container {
             width: 100%;
@@ -81,7 +94,7 @@
             align-items: center;
         }
 
-        .dropdown-header h2 { font-size: 1.25rem; margin: 0; font-weight: 600; }
+        .dropdown-header h2 { font-size: 1.1rem; margin: 0; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .chevron {
             width: 20px;
@@ -101,7 +114,7 @@
         }
 
         .glass-panel.is-open .dropdown-content {
-            max-height: 1000px; 
+            max-height: 1200px; 
             opacity: 1;
             padding-bottom: 30px;
             pointer-events: auto;
@@ -117,6 +130,23 @@
             border-radius: 20px;
             margin-top: 10px;
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- House List Styling --- */
+        .house-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .house-tag {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
         /* --- Upgrade Requirements Grid --- */
@@ -145,8 +175,7 @@
     <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Tottenham_Hotspur.svg" class="bg-logo">
 
     <header>
-        <h1>Discards Wiki</h1>
-        <p>Official Database</p>
+        <h1>Discards Wiki<span class="beta-badge">Beta</span></h1>
     </header>
 
     <div class="container">
@@ -164,7 +193,41 @@
             </div>
         </div>
 
-        <!-- Section 2: Rank & Card Variants (New!) -->
+        <!-- Section 2: The 6 Houses -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>The 6 Houses</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <p>Cards are divided into six distinct houses. Collecting players from the same house is key to winning games.</p>
+                <div class="house-grid">
+                    <div class="house-tag">Hotspur</div>
+                    <div class="house-tag">Sisters</div>
+                    <div class="house-tag">Castle</div>
+                    <div class="house-tag">Lion</div>
+                    <div class="house-tag">White-Hot</div>
+                    <div class="house-tag">1882</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Chemistry vs Rating -->
+        <div class="glass-panel" onclick="toggleDropdown(this)">
+            <div class="dropdown-header">
+                <h2>Chemistry & Performance</h2>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="dropdown-content">
+                <div class="mechanics-box">
+                    <h3 style="margin-top:0; color:#5dade2;">The Chemistry Advantage</h3>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">Rating isn't everything. A lower-rated team with **high chemistry** (matching houses and positions) has a strong chance to outperform a higher-rated team made of random players.</p>
+                </div>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 15px;">Tip: Prioritize House links before hunting for high-rating Diamond cards.</p>
+            </div>
+        </div>
+
+        <!-- Section 4: Rank & Card Variants -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Server Rank & Card Types</h2>
@@ -172,42 +235,18 @@
             </div>
             <div class="dropdown-content">
                 <div class="mechanics-box">
-                    <h3 style="margin-top:0; color:#5dade2;">Rank Scaling</h3>
-                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">A player's card profile is not fixed. Depending on your current rank within the server, your cards can feature different **Stats, Positions, and Abilities**.</p>
-                </div>
-                <div class="mechanics-box">
-                    <h3 style="margin-top:0; color:#5dade2;">Dynamic Varieties</h3>
-                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">As you climb the server ranks, you unlock access to higher-tier card variants that offer better performance and unique strategic advantages in the game.</p>
+                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">Depending on your current rank within the server, your cards can feature different **Stats, Positions, and Abilities**.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Section 3: How do new cards work? -->
-        <div class="glass-panel" onclick="toggleDropdown(this)">
-            <div class="dropdown-header">
-                <h2>How do new cards work?</h2>
-                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="dropdown-content">
-                <div class="mechanics-box">
-                    <h3 style="margin-top:0; color:#5dade2;">Card Rarity & Drops</h3>
-                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">New cards are dropped during active sessions. Higher rarities like Gold and Diamond have significantly lower drop rates and often require strategic upgrades.</p>
-                </div>
-                <div class="mechanics-box">
-                    <h3 style="margin-top:0; color:#5dade2;">Collection Strategy</h3>
-                    <p style="font-size: 0.95rem; color: rgba(255,255,255,0.8);">Focus on collecting Lilywhites to build your base. Once you have five, you can move toward your first Bronze upgrade.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 4: Upgrade Requirements -->
+        <!-- Section 5: Upgrade Requirements -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>Upgrade Requirements</h2>
                 <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>Requirements to merge duplicates into higher tiers:</p>
                 <div class="upgrade-grid">
                     <div class="tier-item">
                         <span style="color: #cd7f32;">5</span>
