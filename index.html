@@ -44,29 +44,33 @@
         h1 { font-size: 2.8rem; font-weight: 700; letter-spacing: -1.5px; margin: 0; }
         header p { color: rgba(255, 255, 255, 0.6); font-size: 1.1rem; margin-top: 10px; }
 
+        /* --- Container set to fit screen and align tabs --- */
         .container {
             width: 100%;
             max-width: 850px;
             padding: 0 20px 100px;
             box-sizing: border-box;
             z-index: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px; /* Equal spacing between all tabs */
         }
 
-        /* --- Glass Panel (Mobile Click Fix) --- */
+        /* --- Glass Panel (Universal Width) --- */
         .glass-panel {
+            width: 100%;
             background: rgba(255, 255, 255, 0.08); 
             backdrop-filter: blur(35px) saturate(150%);
             -webkit-backdrop-filter: blur(35px) saturate(150%);
             border: 1px solid rgba(255, 255, 255, 0.12);
             border-radius: 30px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-            margin-bottom: 25px;
             overflow: hidden;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            box-sizing: border-box;
         }
 
-        /* Desktop Hover works alongside Click */
         @media (min-width: 1024px) {
             .glass-panel:hover { background: rgba(255, 255, 255, 0.12); transform: translateY(-4px); }
         }
@@ -85,6 +89,7 @@
             height: 20px;
             transition: transform 0.4s ease;
             stroke: #fff;
+            fill: none;
         }
 
         .dropdown-content {
@@ -95,7 +100,6 @@
             pointer-events: none;
         }
 
-        /* This class is toggled by JS */
         .glass-panel.is-open .dropdown-content {
             max-height: 500px;
             opacity: 1;
@@ -105,39 +109,50 @@
 
         .glass-panel.is-open .chevron { transform: rotate(180deg); }
 
-        /* --- Buttons --- */
+        /* --- Link Styling --- */
+        .discord-link {
+            color: #5dade2;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* --- Upgrade Section Grid --- */
+        .upgrade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .tier-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .tier-item span { font-size: 1.8rem; font-weight: 800; }
+        .tier-item small { font-size: 0.7rem; font-weight: 600; opacity: 0.6; display: block; margin-top: 5px; }
+
+        /* --- Action Button (Equal Width to Panels) --- */
         .action-btn {
-            display: block;
             width: 100%;
             padding: 22px;
-            margin-top: 15px;
             background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            border-radius: 30px;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
             text-align: center;
             backdrop-filter: blur(10px);
             transition: all 0.3s ease;
+            box-sizing: border-box;
         }
 
-        .action-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.02); }
+        .action-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.01); }
 
-        .tier-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .upgrade-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
     </style>
 </head>
 <body>
@@ -151,31 +166,31 @@
 
     <div class="container">
         
-        <!-- Access Dropdown -->
+        <!-- How to Access (Dropdown) -->
         <div class="glass-panel" onclick="toggleDropdown(this)">
             <div class="dropdown-header">
                 <h2>How to Access</h2>
-                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg class="chevron" viewBox="0 0 24 24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
             </div>
             <div class="dropdown-content">
-                <p>1. Join the Spurs Discord.</p>
-                <p>2. Open Activities tab.</p>
-                <p>3. Launch Discoys Discards.</p>
+                <p>1. Join the <a href="https://discord.gg/spurs" target="_blank" class="discord-link">Spurs Discord Server</a>.</p>
+                <p>2. Open the **Activities** tab in any voice channel.</p>
+                <p>3. Search for and launch **Discoys Discards**.</p>
             </div>
         </div>
 
-        <!-- Upgrade Section -->
+        <!-- Upgrade Tiers (Static Panel) -->
         <div class="glass-panel" style="padding: 24px 30px; cursor: default;">
-            <h2 style="margin:0; font-size: 1.3rem;">Upgrade Tiers</h2>
+            <h2 style="margin:0; font-size: 1.3rem;">Upgrade Requirements</h2>
             <div class="upgrade-grid">
-                <div class="tier-item"><span style="color: #cd7f32;">5</span><br><small>BRONZE</small></div>
-                <div class="tier-item"><span style="color: #d1d1d1;">8</span><br><small>SILVER</small></div>
-                <div class="tier-item"><span style="color: #d4af37;">12</span><br><small>GOLD</small></div>
-                <div class="tier-item"><span style="color: #5dade2;">15</span><br><small>DIAMOND</small></div>
+                <div class="tier-item"><span style="color: #cd7f32;">5</span><small>BRONZE</small></div>
+                <div class="tier-item"><span style="color: #d1d1d1;">8</span><small>SILVER</small></div>
+                <div class="tier-item"><span style="color: #d4af37;">12</span><small>GOLD</small></div>
+                <div class="tier-item"><span style="color: #5dade2;">15</span><small>DIAMOND</small></div>
             </div>
         </div>
 
-        <!-- New Mechanics Page Button -->
+        <!-- Mechanics Page Link -->
         <a href="mechanics.html" class="action-btn">How do new Discards cards work? →</a>
 
     </div>
